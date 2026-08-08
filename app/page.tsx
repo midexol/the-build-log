@@ -1,84 +1,73 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
-import { format } from "date-fns";
+import PostCard from "@/components/PostCard";
 
 export default function HomePage() {
   const posts = getAllPosts().slice(0, 3);
 
   return (
-    <div className="max-w-3xl mx-auto px-6">
-      {/* Hero */}
-      <section className="pt-20 pb-16">
-        <p className="font-mono text-sm text-signal mb-3">// intern building in public</p>
-        <h1 className="font-mono text-3xl sm:text-4xl font-semibold text-ink leading-tight mb-4">
-          SQL, Python, and keeping the team moving.
-        </h1>
-        <p className="text-muted text-lg leading-relaxed max-w-xl mb-6">
-          I&apos;m Mide — data analyst, team coordinator, and developer at my internship.
-          This is my running log: the wins, the failures, and the messy middle.
-          No gatekeeping. Just honest lessons from someone building their career in public.
-        </p>
-        <div className="flex gap-4 font-mono text-sm">
-          <a
-            href="https://x.com/mide_xol"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-signal hover:underline transition-colors"
-          >
-            @mide_xol ↗
-          </a>
-          <a
-            href="https://www.linkedin.com/in/okunola-olamide-xielle526"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted hover:text-signal transition-colors"
-          >
-            linkedin ↗
-          </a>
+    <>
+      {/* ── Hero ── */}
+      <section className="bg-surface border-b border-border">
+        <div className="max-w-5xl mx-auto px-6 py-20 sm:py-28">
+          <span className="inline-flex items-center gap-2 tag-pill mb-6 text-sm">
+            📓 Internship Journal
+          </span>
+          <h1 className="text-4xl sm:text-5xl font-bold text-ink leading-tight tracking-tight mb-5 max-w-2xl">
+            SQL, Python, and keeping the team moving.
+          </h1>
+          <p className="text-lg text-muted leading-relaxed max-w-xl mb-8">
+            I&apos;m Mide — data analyst, team coordinator, and developer at my internship.
+            Documenting the wins, failures, and messy middle in public.
+          </p>
+          <div className="flex gap-3 flex-wrap">
+            <Link href="/blog" className="btn-primary">
+              Read the blog →
+            </Link>
+            <Link href="/about" className="btn-outline">
+              About me
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Recent posts */}
-      <section className="pb-24">
-        <h2 className="font-mono text-sm text-muted uppercase tracking-wide mb-6">
-          Recent entries
-        </h2>
-        <div className="space-y-8">
-          {posts.length === 0 ? (
-            <p className="text-muted font-mono text-sm">No posts yet. Check back soon.</p>
-          ) : (
-            posts.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className="block group">
-                <p className="commit-id font-mono text-xs text-muted mb-1">
-                  {post.slug.slice(0, 7)} · {format(new Date(post.date), "MMM d, yyyy")}
-                </p>
-                <h3 className="text-xl font-semibold text-ink group-hover:text-signal transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-muted mt-1">{post.summary}</p>
-                {post.tags.length > 0 && (
-                  <div className="flex gap-2 mt-2 flex-wrap">
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-mono text-xs text-signal bg-signal/10 px-2 py-0.5 rounded"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </Link>
-            ))
-          )}
+      {/* ── Recent posts ── */}
+      <section className="max-w-5xl mx-auto px-6 py-16">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-xl font-bold text-ink">Recent entries</h2>
+          <Link
+            href="/blog"
+            className="text-sm font-medium text-navy hover:text-navy-dark transition-colors"
+          >
+            View all →
+          </Link>
         </div>
-        <Link
-          href="/blog"
-          className="inline-block mt-10 font-mono text-sm text-signal underline underline-offset-2"
-        >
-          view all posts →
-        </Link>
+
+        {posts.length === 0 ? (
+          <p className="text-muted">No posts yet — check back soon.</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {posts.map((post, i) => (
+              <PostCard key={post.slug} post={post} index={i} />
+            ))}
+          </div>
+        )}
       </section>
-    </div>
+
+      {/* ── About strip ── */}
+      <section className="bg-navy text-white">
+        <div className="max-w-5xl mx-auto px-6 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <p className="text-sm font-medium text-blue-200 mb-1">Behind the log</p>
+            <h2 className="text-xl font-bold">
+              &ldquo;Not the expert. Just the intern who takes notes.&rdquo;
+            </h2>
+          </div>
+          <Link href="/about" className="btn-outline border-white text-white hover:bg-white/10 shrink-0">
+            Read my story →
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }

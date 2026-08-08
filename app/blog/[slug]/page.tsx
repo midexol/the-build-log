@@ -40,11 +40,9 @@ export async function generateMetadata({
 }
 
 const prettyCodeOptions: Options = {
-  // Matches the blog's dark code aesthetic
   theme: "github-dark-dimmed",
   keepBackground: true,
   onVisitLine(node) {
-    // Prevent collapsing of empty lines
     if (node.children.length === 0) {
       node.children = [{ type: "text", value: " " }];
     }
@@ -81,53 +79,60 @@ export default async function PostPage({
   });
 
   return (
-    <article className="max-w-3xl mx-auto px-6 py-16">
-      {/* Back link */}
+    <div className="max-w-5xl mx-auto px-6 py-12">
+      {/* Back */}
       <Link
         href="/blog"
-        className="inline-block font-mono text-xs text-muted hover:text-signal transition-colors mb-10"
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-muted hover:text-navy transition-colors mb-10"
       >
-        ← all posts
+        ← All posts
       </Link>
 
-      {/* Eyebrow */}
-      <p className="commit-id font-mono text-xs text-muted mb-3">
-        {post.slug.slice(0, 7)} · {format(new Date(post.date), "MMMM d, yyyy")} ·{" "}
-        {post.readingTime}
-      </p>
+      <article className="max-w-2xl">
+        {/* Tags */}
+        {post.tags.length > 0 && (
+          <div className="flex gap-2 flex-wrap mb-5">
+            {post.tags.map((tag) => (
+              <Link key={tag} href={`/blog?tag=${tag}`} className="tag-pill">
+                {tag}
+              </Link>
+            ))}
+          </div>
+        )}
 
-      {/* Title */}
-      <h1 className="font-mono text-2xl sm:text-3xl font-semibold text-ink mb-4 leading-tight">
-        {post.title}
-      </h1>
+        {/* Title */}
+        <h1 className="text-3xl sm:text-4xl font-bold text-ink leading-tight tracking-tight mb-4">
+          {post.title}
+        </h1>
 
-      {/* Tags */}
-      {post.tags.length > 0 && (
-        <div className="flex gap-2 mb-10 flex-wrap">
-          {post.tags.map((tag) => (
-            <Link
-              key={tag}
-              href={`/tags/${tag}`}
-              className="font-mono text-xs text-signal bg-signal/10 px-2 py-0.5 rounded hover:bg-signal/20 transition-colors"
-            >
-              #{tag}
-            </Link>
-          ))}
+        {/* Meta row */}
+        <div className="flex items-center gap-3 text-sm text-muted mb-10 pb-8 border-b border-border">
+          <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
+          <span className="text-border">·</span>
+          <span>{post.readingTime}</span>
         </div>
-      )}
 
-      {/* Content */}
-      <div className="prose-post">{content}</div>
+        {/* MDX content */}
+        <div className="prose-post">{content}</div>
 
-      {/* Footer nav */}
-      <div className="mt-16 pt-8 border-t border-line">
-        <Link
-          href="/blog"
-          className="font-mono text-sm text-signal underline underline-offset-2"
-        >
-          ← back to all posts
-        </Link>
-      </div>
-    </article>
+        {/* Footer */}
+        <div className="mt-16 pt-8 border-t border-border flex items-center justify-between">
+          <Link
+            href="/blog"
+            className="text-sm font-medium text-navy hover:text-navy-dark transition-colors"
+          >
+            ← Back to all posts
+          </Link>
+          <a
+            href={`https://x.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://blog-black-eta-50.vercel.app/blog/${post.slug}`)}&via=mide_xol`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-muted hover:text-navy transition-colors"
+          >
+            Share on X →
+          </a>
+        </div>
+      </article>
+    </div>
   );
 }

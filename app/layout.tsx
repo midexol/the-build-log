@@ -10,63 +10,75 @@ export const metadata: Metadata = {
   description:
     "Documenting an internship in public: SQL, Python, team coordination, and shipping with AI as a pair programmer. By Olamide Okunola (@mide_xol).",
   authors: [{ name: "Olamide Okunola", url: "https://x.com/mide_xol" }],
-  openGraph: {
-    siteName: "The Build Log",
-    locale: "en_US",
-    type: "website",
-  },
-  alternates: {
-    types: {
-      "application/rss+xml": "/feed.xml",
-    },
-  },
+  openGraph: { siteName: "The Build Log", locale: "en_US", type: "website" },
+  alternates: { types: { "application/rss+xml": "/feed.xml" } },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="font-sans">
+      <body>
         <div className="min-h-screen flex flex-col">
-          <header className="border-b border-line bg-panel">
-            <nav className="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
-              <Link href="/" className="font-mono font-semibold text-ink tracking-tight">
+          {/* ── Nav ── */}
+          <header className="sticky top-0 z-50 bg-surface border-b border-border shadow-sm">
+            <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+              <Link
+                href="/"
+                className="font-bold text-lg text-navy tracking-tight hover:opacity-80 transition-opacity"
+              >
                 the_build_log
               </Link>
-              <div className="flex gap-6 font-mono text-sm text-muted">
-                <Link href="/blog" className="hover:text-signal transition-colors">
-                  posts
-                </Link>
-                <Link href="/about" className="hover:text-signal transition-colors">
-                  about
-                </Link>
+              <div className="flex items-center gap-6">
+                <div className="hidden sm:flex gap-6 text-sm font-medium text-muted">
+                  <Link href="/blog" className="hover:text-navy transition-colors">
+                    Posts
+                  </Link>
+                  <Link href="/about" className="hover:text-navy transition-colors">
+                    About
+                  </Link>
+                </div>
+                <a
+                  href="https://x.com/mide_xol"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary text-sm py-1.5 px-4"
+                >
+                  Follow @mide_xol
+                </a>
               </div>
             </nav>
           </header>
 
           <main className="flex-1">{children}</main>
 
-          <footer className="border-t border-line">
-            <div className="max-w-3xl mx-auto px-6 py-8 font-mono text-xs text-muted flex items-center justify-between">
-              <span>© 2026 Olamide Okunola · built with next.js</span>
-              <div className="flex gap-4">
+          {/* ── Footer ── */}
+          <footer className="border-t border-border bg-surface mt-16">
+            <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-sm text-muted">
+                © 2026 Olamide Okunola · Built with Next.js, deployed on Vercel
+              </p>
+              <div className="flex gap-5 text-sm font-medium">
                 <a
                   href="https://x.com/mide_xol"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-signal transition-colors"
+                  className="text-muted hover:text-navy transition-colors"
                 >
-                  x / twitter
+                  X / Twitter
                 </a>
                 <a
                   href="https://www.linkedin.com/in/okunola-olamide-xielle526"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-signal transition-colors"
+                  className="text-muted hover:text-navy transition-colors"
                 >
-                  linkedin
+                  LinkedIn
                 </a>
-                <Link href="/feed.xml" className="hover:text-signal transition-colors">
-                  rss
+                <Link
+                  href="/feed.xml"
+                  className="text-muted hover:text-navy transition-colors"
+                >
+                  RSS
                 </Link>
               </div>
             </div>
