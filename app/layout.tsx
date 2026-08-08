@@ -38,12 +38,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </Link>
                 </div>
                 <a
-                  href="https://x.com/mide_xol"
+                  href="https://midexol.substack.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary text-sm py-1.5 px-4"
                 >
-                  Follow @mide_xol
+                  Subscribe ✉
                 </a>
               </div>
             </nav>
@@ -58,6 +58,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 © 2026 Olamide Okunola · Built with Next.js, deployed on Vercel
               </p>
               <div className="flex gap-5 text-sm font-medium">
+                <a
+                  href="https://midexol.substack.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted hover:text-navy transition-colors"
+                >
+                  Substack
+                </a>
                 <a
                   href="https://x.com/mide_xol"
                   target="_blank"

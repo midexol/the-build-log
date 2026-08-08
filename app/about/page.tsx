@@ -88,10 +88,18 @@ export default function AboutPage() {
         <h2 className="font-bold text-ink text-lg mb-4">Let&apos;s connect</h2>
         <div className="flex gap-3 flex-wrap">
           <a
-            href="https://x.com/mide_xol"
+            href="https://midexol.substack.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"
+          >
+            Subscribe on Substack ✉
+          </a>
+          <a
+            href="https://x.com/mide_xol"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline"
           >
             X / @mide_xol →
           </a>
