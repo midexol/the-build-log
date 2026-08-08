@@ -14,7 +14,40 @@ notes as they happen. Not polished. Not perfect. Just real.
 ## What's coming
 
 - Hackathon retros — what worked, what didn't, what I'd do differently
-- Notes from learning Rust and Soroban
-- Occasional detours into AI agents and prompt engineering
+- Notes from learning SQL and Python on the job
+- Occasional detours into AI agents and automation
+
+## A taste of the kind of thing I'll be writing about
+
+Here's the kind of SQL I write on a daily basis — nothing fancy, just getting
+answers out of messy data:
+
+```sql
+-- Find the top 5 products by revenue this month
+SELECT
+  product_name,
+  SUM(quantity * unit_price) AS revenue
+FROM orders
+WHERE order_date >= DATE_TRUNC('month', CURRENT_DATE)
+GROUP BY product_name
+ORDER BY revenue DESC
+LIMIT 5;
+```
+
+And the Python that automates the Excel report that used to take 2 hours:
+
+```python
+import pandas as pd
+
+def generate_report(filepath: str) -> pd.DataFrame:
+    df = pd.read_excel(filepath)
+    summary = (
+        df.groupby("department")["spend"]
+        .agg(["sum", "mean", "count"])
+        .rename(columns={"sum": "total", "mean": "avg", "count": "entries"})
+        .reset_index()
+    )
+    return summary
+```
 
 If you're tracking a similar path, welcome. Let's see where this goes.

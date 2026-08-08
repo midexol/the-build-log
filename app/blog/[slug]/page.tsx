@@ -4,7 +4,9 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import { format } from "date-fns";
 import { getPostBySlug, getAllSlugs } from "@/lib/posts";
 import { getMDXComponents } from "@/mdx-components";
+import rehypePrettyCode from "rehype-pretty-code";
 import type { Metadata } from "next";
+import type { Options } from "rehype-pretty-code";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -37,6 +39,27 @@ export async function generateMetadata({
   };
 }
 
+const prettyCodeOptions: Options = {
+  // Matches the blog's dark code aesthetic
+  theme: "github-dark-dimmed",
+  keepBackground: true,
+  onVisitLine(node) {
+    // Prevent collapsing of empty lines
+    if (node.children.length === 0) {
+      node.children = [{ type: "text", value: " " }];
+    }
+  },
+  onVisitHighlightedLine(node) {
+    node.properties.className = [
+      ...(node.properties.className ?? []),
+      "line--highlighted",
+    ];
+  },
+  onVisitHighlightedChars(node) {
+    node.properties.className = ["word--highlighted"];
+  },
+};
+
 export default async function PostPage({
   params,
 }: {
@@ -49,7 +72,12 @@ export default async function PostPage({
   const { content } = await compileMDX({
     source: post.content,
     components: getMDXComponents(),
-    options: { parseFrontmatter: false },
+    options: {
+      parseFrontmatter: false,
+      mdxOptions: {
+        rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
+      },
+    },
   });
 
   return (

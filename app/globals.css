@@ -52,7 +52,8 @@ body {
   text-decoration-color: #D6DCE1;
   text-underline-offset: 2px;
 }
-.prose-post code {
+/* Inline code — NOT inside a pre block */
+.prose-post :not(pre) > code {
   font-family: "JetBrains Mono", monospace;
   font-size: 0.875em;
   background: #FFFFFF;
@@ -60,20 +61,68 @@ body {
   border-radius: 4px;
   padding: 0.1em 0.4em;
 }
-.prose-post pre {
-  background: #101418;
-  color: #EDF0F2;
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
-  overflow-x: auto;
+
+/* rehype-pretty-code wraps blocks in <figure> */
+.prose-post figure[data-rehype-pretty-code-figure] {
   margin-bottom: 1.5rem;
 }
+
+/* Language label shown above the block */
+.prose-post figcaption[data-rehype-pretty-code-title] {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  color: #5B6472;
+  background: #1a2030;
+  border: 1px solid #2a3040;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 0.4rem 1rem;
+}
+
+.prose-post figcaption[data-rehype-pretty-code-title] + pre {
+  border-radius: 0 0 8px 8px;
+}
+
+/* Code block */
+.prose-post pre {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  border: 1px solid #2a3040;
+  line-height: 1.7;
+}
+
 .prose-post pre code {
   background: transparent;
   border: none;
   padding: 0;
+  font-size: inherit;
   color: inherit;
+  display: grid;
 }
+
+/* Each line in the code block */
+.prose-post pre code .line {
+  padding: 0 1rem;
+  border-left: 2px solid transparent;
+  min-height: 1.5rem;
+}
+
+/* Highlighted line (add {3} or {1-5} after language) */
+.prose-post pre code .line--highlighted {
+  background: rgba(201, 122, 46, 0.12);
+  border-left-color: #C97A2E;
+}
+
+/* Highlighted word/chars */
+.prose-post pre code .word--highlighted {
+  background: rgba(201, 122, 46, 0.2);
+  border-radius: 3px;
+  padding: 0.1em 0.2em;
+}
+
 .prose-post ul, .prose-post ol {
   margin-bottom: 1.25rem;
   padding-left: 1.5rem;
