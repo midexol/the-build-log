@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Mail, Twitter, Linkedin } from "lucide-react";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -41,9 +42,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   href="https://midexol.substack.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary text-sm py-1.5 px-4"
+                  className="btn-primary text-sm py-1.5 px-4 flex items-center gap-1.5"
                 >
-                  Subscribe ✉
+                  <Mail size={14} />
+                  Subscribe
                 </a>
               </div>
             </nav>
@@ -57,37 +59,34 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <p className="text-sm text-muted">
                 © 2026 Olamide Okunola · Built with Next.js, deployed on Vercel
               </p>
-              <div className="flex gap-5 text-sm font-medium">
+              <div className="flex gap-4 items-center">
                 <a
                   href="https://midexol.substack.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted hover:text-navy transition-colors"
+                  aria-label="Substack newsletter"
                 >
-                  Substack
+                  <Mail size={18} />
                 </a>
                 <a
                   href="https://x.com/mide_xol"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted hover:text-navy transition-colors"
+                  aria-label="X / Twitter"
                 >
-                  X / Twitter
+                  <Twitter size={18} />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/okunola-olamide-xielle526"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted hover:text-navy transition-colors"
+                  aria-label="LinkedIn"
                 >
-                  LinkedIn
+                  <Linkedin size={18} />
                 </a>
-                <Link
-                  href="/feed.xml"
-                  className="text-muted hover:text-navy transition-colors"
-                >
-                  RSS
-                </Link>
               </div>
             </div>
           </footer>
