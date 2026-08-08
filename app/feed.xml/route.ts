@@ -1,7 +1,7 @@
 import { getAllPosts } from "@/lib/posts";
 
 // Update SITE_URL to your real domain once you deploy.
-const SITE_URL = "https://mide-xol.vercel.app";
+const SITE_URL = "https://blog-black-eta-50.vercel.app";
 const SITE_TITLE = "The Build Log — Mide_xol";
 const SITE_DESCRIPTION =
   "Documenting an internship in public: SQL, Python, team coordination, and shipping with AI as a pair programmer. By Olamide Okunola (@mide_xol).";
