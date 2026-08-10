@@ -19,7 +19,6 @@ export type Post = PostMeta & {
 };
 
 function slugFromFilename(filename: string) {
-  // filenames look like 2026-08-08-my-post-title.mdx
   return filename.replace(/\.mdx?$/, "");
 }
 
@@ -38,6 +37,28 @@ export function getAllPosts(): PostMeta[] {
       summary: data.summary ?? "",
       tags: data.tags ?? [],
       readingTime: readingTime(content).text,
+    };
+  });
+
+  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+export function getAllPostsFull(): Post[] {
+  if (!fs.existsSync(POSTS_DIR)) return [];
+
+  const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".mdx"));
+
+  const posts = files.map((filename) => {
+    const raw = fs.readFileSync(path.join(POSTS_DIR, filename), "utf-8");
+    const { data, content } = matter(raw);
+    return {
+      slug: slugFromFilename(filename),
+      title: data.title ?? "Untitled",
+      date: data.date ?? "1970-01-01",
+      summary: data.summary ?? "",
+      tags: data.tags ?? [],
+      readingTime: readingTime(content).text,
+      content,
     };
   });
 

@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/lib/posts";
+import { getAllPostsFull } from "@/lib/posts";
 
 export const dynamic = "force-static";
 
@@ -17,18 +17,17 @@ function escapeXml(unsafe: string): string {
 }
 
 function sanitizeTag(tag: string): string {
-  // DEV.to & RSS compatible: lowercase, no spaces or special characters
   return tag.toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
 export async function GET() {
-  const posts = getAllPosts();
+  const posts = getAllPostsFull();
 
   const items = posts
     .map((post) => {
       const url = `${SITE_URL}/blog/${post.slug}`;
       const pubDate = new Date(post.date).toUTCString();
-      
+
       const categoriesXml = post.tags
         .slice(0, 4)
         .map((tag) => `<category>${escapeXml(sanitizeTag(tag))}</category>`)
@@ -41,13 +40,14 @@ export async function GET() {
       <guid isPermaLink="true">${url}</guid>
       <pubDate>${pubDate}</pubDate>
       <description>${escapeXml(post.summary)}</description>
+      <content:encoded><![CDATA[${post.content}]]></content:encoded>
       ${categoriesXml}
     </item>`;
     })
     .join("");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>${escapeXml(SITE_TITLE)}</title>
     <link>${SITE_URL}</link>
