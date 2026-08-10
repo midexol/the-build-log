@@ -1,114 +1,112 @@
-
-## How I Wrote a Technical Doc That Even Non-Tech Users Could Follow
-
-Date: 2026-08-10
-
-### By Mide_xol | 5 min read
+---
+title: "How I Wrote a Technical Doc That Even Non-Tech Users Could Follow"
+date: "2026-08-10"
+summary: "Lessons from writing my first technical documentation for BizIQ — simple enough for non-tech users, complete enough to actually work."
+tags: ["technical-writing", "documentation", "biziq", "internship"]
 ---
 
-I recently wrote my first technical documentation piece for BizIQ. A platform that helps small and medium enterprises manage their sales and customer communication.
-Sounds straight forward right?
+I recently wrote my first technical documentation piece for BizIQ — a platform that helps small and medium enterprises manage their sales and customer communication.
+
+Sounds straightforward right?  
 It wasn’t.
 
-**Here’s the thing**: BizIQ users are not developers. They are fashion brands, shoe brands, restaurant owners and service providers who just want their business to work. They don’t care about APIs, embedded groups or any complex developer stuff. They care about not losing customers because they couldn’t reply to a WhatsApp message.
+**Here’s the thing**: BizIQ users are not developers. They are fashion brands, shoe brands, restaurant owners, and service providers who just want their business to work. They don’t care about APIs, embedded groups, or any complex developer stuff. They care about not losing customers because they couldn’t reply to a WhatsApp message.
 
-When we released the products for a few business owners to test, a lot of them had issues with understanding the platform and navigating through it. We had to keep hopping on calls to direct them or we helped them do the setting up ourselves. It was a lot.
+When we released the products for a few business owners to test, a lot of them had issues with understanding the platform and navigating through it. We had to keep hopping on calls to direct them or set things up ourselves. It was a lot.
+
 So I decided to write a guide that was:
-Simple enough for a non-techie to follow
-Complete enough to actually work
-Short enough that they’d actually read it
+- **Simple enough** for a non-techie to follow
+- **Complete enough** to actually work
+- **Short enough** that they’d actually read it
+
 Here’s how I did it and what I learned along the way.
 
-## The Hardest part? Starting.
 ---
+
+## The Hardest Part? Starting.
+
 When I first sat down to write, I had no structure. I just started dumping steps into a document:
 
-*1. Go to chat app on dashboard*
+1. *Go to chat app on dashboard*
+2. *Connect via Meta Embedded Group*
+3. *Need a Facebook account*
+4. *Follow the setup process*
+5. *Upload products*
+6. *Train AI assistant*
 
-*2. Connect via Meta Embedded Group*
+It was a mess. The steps were out of order. I was mixing product uploads with AI setup. And I kept jumping between "user instructions" and "system requirements" without warning. I almost gave up because I got confused at some point.
 
-*3. Need a Facebook account*
+Then I remembered a piece of advice I’d heard:
 
-*4. Follow the setup process*
+> “Write everything you know. Then organize it later.”
 
-*5. Upload products*
+So I did. I wrote every single step, no matter how messy. Then I stepped back and asked: *“What does the user actually need to do first?”*
 
-*6. Train AI assistant*
-…
-It was a mess. The steps were out of order. I was mixing product uploads with AI setup. And I kept jumping between “user instructions” and “system requirements” without warning.
-I almost gave up because I got confused at some point. 
+The answer was: **Create an account.**
 
-I remembered a piece of advice I’d heard:
-> “write everything you know. Then organize it later.”
-
-So I did. I wrote every single step, no matter how messy. Then I stepped back and asked: “What does the user actually need to do first?”
-The answer was: Create an account.
 I figured the best way forward was to sign up from scratch and walk through the entire setup flow just like a new user would.
 
 That simple realization changed everything. Once I put the steps in the right order, the rest started flowing.
 
-### The 3 Principles I Followed
 ---
+
+## The 3 Principles I Followed
+
 Once I had structure, I set 3 rules for myself:
 
-1. Every step must be click-by-click
-I didn't say "set up your AI agent." I said:
-
-"On your dashboard, go to Chat Settings > Click Connect via Meta Embedded Group."
+### 1. Every step must be click-by-click
+I didn't say *"set up your AI agent."* I said:
+> *"On your dashboard, go to **Chat Settings** > Click **Connect via Meta Embedded Group**."*
 
 No ambiguity. No assumptions.
 
-2. Every section must have a "how to know it worked"
-For account creation: "You'll see a green 'Verified' badge."
-For product uploads: "Your products will appear in a list on the Products page."
+### 2. Every section must have a "how to know it worked"
+- For account creation: *"You'll see a green 'Verified' badge."*
+- For product uploads: *"Your products will appear in a list on the Products page."*
 
 Users need a win condition. Without it, they're guessing.
 
-3. Warnings go BEFORE the action, not after
+### 3. Warnings go BEFORE the action, not after
 I learned this the hard way. I originally wrote:
-
-"Connect via Meta Embedded Group (NOTE: you need a Facebook account)."
+> *"Connect via Meta Embedded Group (NOTE: you need a Facebook account)."*
 
 That's too late. I moved it to BEFORE the step:
-
-"Before starting, make sure you have a Facebook account and a WhatsApp Business number."
+> *"Before starting, make sure you have a Facebook account and a WhatsApp Business number."*
 
 Now nobody gets halfway through and gets stuck.
 
-### What I'd Do Differently Next Time
 ---
+
+## What I'd Do Differently Next Time
 
 I'm proud of the final doc, but there are 3 things I'd improve:
 
+1. **Test live instead of writing from memory**: I wrote the doc from memory without testing it myself first. Next time, I'll record my own steps while doing the task.
+2. **Plan troubleshooting from day one**: Troubleshooting should be planned from the start. I missed common errors like *"Meta connection fails"*.
+3. **Include screenshots**: A 5-page doc with no images is harder to follow. I'll add screenshots next time.
 
-1. I wrote the doc without testing it myself first. Next time, I'll record my own steps while doing the task, not from memory. I wasted a lot of time trying to write the doc from memory.
-
-2. I forgot to add troubleshooting until the end. Troubleshooting should be planned from the start. I missed common errors like "Meta connection fails"
-3. I didn't include screenshots. A 5-page doc with no images is harder to follow. I'll add at least 5 screenshots next time
-
-
-### The One Lesson That Stuck
 ---
 
-"Technical writing is not about sounding smart. It's about making the user feel smart."
+## The One Lesson That Stuck
 
-I almost wrote a sentence like: "The AI agent leverages Meta's Embedded Group API to facilitate WhatsApp integration."
+> **"Technical writing is not about sounding smart. It's about making the user feel smart."**
+
+I almost wrote a sentence like:
+> *"The AI agent leverages Meta's Embedded Group API to facilitate WhatsApp integration."*
 
 Instead, I wrote:
+> *"Connect your WhatsApp so your AI agent can reply to customers."*
 
-"Connect your WhatsApp so your AI agent can reply to customers."
+Same meaning. But the second one doesn't make the user feel lost. That's the whole game right there.
 
-Same meaning. But the second one doesn't make the user feel dumb.
-
-That's the whole game right there.
-
-### Final Thoughts
 ---
-Writing the BizIQ doc took me about 5 pages and a lot of staring at my screen. But when I handed it to a coworker who knew nothing about the platform, and they set up their account in 15 minutes without asking me a single question. That was the best feeling.
+
+## Final Thoughts
+
+Writing the BizIQ doc took me about 5 pages and a lot of staring at my screen. But when I handed it to a coworker who knew nothing about the platform, and they set up their account in 15 minutes without asking me a single question — that was the best feeling.
 
 If you're writing your first tech doc, my advice is:
 
-Start messy. Structure later. Test with a real human. Then publish.
+**Start messy. Structure later. Test with a real human. Then publish.**
 
 You'll be surprised how good it feels.
-
