@@ -16,6 +16,11 @@ function escapeXml(unsafe: string): string {
     .replace(/'/g, "&apos;");
 }
 
+function sanitizeTag(tag: string): string {
+  // DEV.to & RSS compatible: lowercase, no spaces or special characters
+  return tag.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
 export async function GET() {
   const posts = getAllPosts();
 
@@ -23,6 +28,12 @@ export async function GET() {
     .map((post) => {
       const url = `${SITE_URL}/blog/${post.slug}`;
       const pubDate = new Date(post.date).toUTCString();
+      
+      const categoriesXml = post.tags
+        .slice(0, 4)
+        .map((tag) => `<category>${escapeXml(sanitizeTag(tag))}</category>`)
+        .join("\n      ");
+
       return `
     <item>
       <title>${escapeXml(post.title)}</title>
@@ -30,6 +41,7 @@ export async function GET() {
       <guid isPermaLink="true">${url}</guid>
       <pubDate>${pubDate}</pubDate>
       <description>${escapeXml(post.summary)}</description>
+      ${categoriesXml}
     </item>`;
     })
     .join("");
