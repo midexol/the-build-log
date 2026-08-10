@@ -1,15 +1,15 @@
-# The Build Log — Mide_xol
+# The Build Log - Mide_xol
 
 > "Not the expert. Just the intern who takes notes and keeps the team moving."
 
 Personal dev journal and internship log by **Olamide Okunola** ([@mide_xol](https://x.com/mide_xol)). Documenting wins, failures, SQL queries, Python scripts, team coordination, and building in public.
 
-🌐 **Live Website:** [https://blog-black-eta-50.vercel.app](https://blog-black-eta-50.vercel.app)  
-✉️ **Substack Newsletter:** [https://midexol.substack.com/](https://midexol.substack.com/)
+ **Live Website:** [https://blog-black-eta-50.vercel.app](https://blog-black-eta-50.vercel.app)  
+ **Substack Newsletter:** [https://midexol.substack.com/](https://midexol.substack.com/)
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Framework:** [Next.js](https://nextjs.org/) (App Router, React 19, TypeScript)
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
@@ -20,7 +20,7 @@ Personal dev journal and internship log by **Olamide Okunola** ([@mide_xol](http
 
 ---
 
-## ✍️ How to Publish a New Post
+##  How to Publish a New Post
 
 1. Create a `.mdx` file in `content/posts/` with the filename format `YYYY-MM-DD-slug-title.mdx`:
    ```bash
@@ -47,7 +47,7 @@ Personal dev journal and internship log by **Olamide Okunola** ([@mide_xol](http
 
 ---
 
-## 💻 Local Development
+##  Local Development
 
 ```bash
 # Clone the repository
@@ -65,7 +65,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🔗 Connect
+##  Connect
 
 - **X (Twitter):** [@mide_xol](https://x.com/mide_xol)
 - **LinkedIn:** [Olamide Okunola](https://www.linkedin.com/in/okunola-olamide-xielle526)
