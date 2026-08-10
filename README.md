@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Build Log — Mide_xol
 
-## Getting Started
+> "Not the expert. Just the intern who takes notes and keeps the team moving."
 
-First, run the development server:
+Personal dev journal and internship log by **Olamide Okunola** ([@mide_xol](https://x.com/mide_xol)). Documenting wins, failures, SQL queries, Python scripts, team coordination, and building in public.
+
+🌐 **Live Website:** [https://blog-black-eta-50.vercel.app](https://blog-black-eta-50.vercel.app)  
+✉️ **Substack Newsletter:** [https://midexol.substack.com/](https://midexol.substack.com/)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (App Router, React 19, TypeScript)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Content:** MDX compiled with [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote)
+- **Syntax Highlighting:** [`rehype-pretty-code`](https://rehype-pretty-code.netlify.app/) + [Shiki](https://shiki.style/) (`github-dark-dimmed` theme)
+- **Icons:** [Lucide React](https://lucide.dev/) + custom SVGs
+- **Deployment:** [Vercel](https://vercel.com/) with automatic GitHub deployments
+
+---
+
+## ✍️ How to Publish a New Post
+
+1. Create a `.mdx` file in `content/posts/` with the filename format `YYYY-MM-DD-slug-title.mdx`:
+   ```bash
+   content/posts/2026-08-10-my-new-post.mdx
+   ```
+
+2. Add the frontmatter header:
+   ```yaml
+   ---
+   title: "Your Post Title"
+   date: "2026-08-10"
+   summary: "A one-line description of the post."
+   tags: ["sql", "python", "internship"]
+   ---
+   ```
+
+3. Commit and push to GitHub:
+   ```bash
+   git add .
+   git commit -m "post: Add new blog entry"
+   git push origin main
+   ```
+   Vercel will automatically build and deploy the update in ~30 seconds.
+
+---
+
+## 💻 Local Development
 
 ```bash
+# Clone the repository
+git clone https://github.com/midexol/the-build-log.git
+cd the-build-log
+
+# Install dependencies
+npm install
+
+# Start the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔗 Connect
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **X (Twitter):** [@mide_xol](https://x.com/mide_xol)
+- **LinkedIn:** [Olamide Okunola](https://www.linkedin.com/in/okunola-olamide-xielle526)
+- **Substack:** [midexol.substack.com](https://midexol.substack.com/)
