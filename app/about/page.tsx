@@ -22,6 +22,14 @@ function LinkedinIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
+function DevToIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 448 512" fill="currentColor">
+      <path d="M120.12 208.29c-3.88-2.9-7.77-4.35-11.65-4.35H91.06v104.47h17.41c3.88 0 7.77-1.45 11.65-4.35 3.88-2.9 5.82-7.25 5.82-13.06v-69.65c.01-5.8-1.93-10.16-5.82-13.06zm-10.45 83.09h-5.8V217.4h5.8c2.9 0 4.35 2.18 4.35 6.53v63.1c0 4.35-1.45 6.53-4.35 6.53zM187.35 203.94h-39.15v104.47h39.15v-17.41h-21.74v-26.12h17.41v-17.41h-17.41v-26.12h21.74v-17.41zM244.66 203.94l-14.7 65.29-14.7-65.29h-19.18l24.47 104.47h18.82l24.47-104.47h-19.18zM315.82 203.94h-26.12v104.47h26.12c14.51 0 26.12-11.61 26.12-26.12v-52.23c0-14.51-11.61-26.12-26.12-26.12zm8.71 78.35c0 4.81-3.9 8.71-8.71 8.71h-8.71V221.35h8.71c4.81 0 8.71 3.9 8.71 8.71v52.23zM0 64v384c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64C28.7 0 0 28.7 0 64z"/>
+    </svg>
+  );
+}
+
 const hats = [
   {
     icon: BarChart2,
@@ -118,6 +126,14 @@ export default function AboutPage() {
             className="btn-primary flex items-center gap-2"
           >
             <Mail size={15} /> Subscribe on Substack
+          </a>
+          <a
+            href="https://dev.to/mide_xol"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline flex items-center gap-2"
+          >
+            <DevToIcon className="w-[15px] h-[15px]" /> Dev.to
           </a>
           <a
             href="https://x.com/mide_xol"

@@ -1,6 +1,7 @@
 import { getAllPosts } from "@/lib/posts";
 
-// Update SITE_URL to your real domain once you deploy.
+export const dynamic = "force-static";
+
 const SITE_URL = "https://blog-black-eta-50.vercel.app";
 const SITE_TITLE = "The Build Log — Mide_xol";
 const SITE_DESCRIPTION =
@@ -48,6 +49,7 @@ export async function GET() {
   return new Response(xml, {
     headers: {
       "Content-Type": "application/rss+xml; charset=utf-8",
+      "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate",
     },
   });
 }
