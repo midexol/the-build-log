@@ -2,8 +2,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { format } from "date-fns";
-import { getPostBySlug, getAllSlugs } from "@/lib/posts";
+import { getPostBySlug, getAllSlugs, getAdjacentPosts } from "@/lib/posts";
 import { getMDXComponents } from "@/mdx-components";
+import { ShareButtons } from "@/components/ShareButtons";
+import { PostNavigation } from "@/components/PostNavigation";
 import rehypePrettyCode from "rehype-pretty-code";
 import type { Metadata } from "next";
 import type { Options } from "rehype-pretty-code";
@@ -67,6 +69,9 @@ export default async function PostPage({
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const { prev, next } = getAdjacentPosts(slug);
+  const postUrl = `https://blog-black-eta-50.vercel.app/blog/${post.slug}`;
+
   const { content } = await compileMDX({
     source: post.content,
     components: getMDXComponents(),
@@ -106,33 +111,36 @@ export default async function PostPage({
         </h1>
 
         {/* Meta row */}
-        <div className="flex items-center gap-3 text-sm text-muted mb-10 pb-8 border-b border-border">
-          <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
-          <span className="text-border">·</span>
-          <span>{post.readingTime}</span>
+        <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-muted mb-10 pb-6 border-b border-border">
+          <div className="flex items-center gap-3">
+            <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
+            <span className="text-border">·</span>
+            <span>{post.readingTime}</span>
+          </div>
         </div>
 
         {/* MDX content */}
         <div className="prose-post">{content}</div>
 
-        {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-border flex items-center justify-between">
+        {/* Share buttons */}
+        <div className="mt-12 pt-6 border-t border-slate-200">
+          <ShareButtons title={post.title} url={postUrl} />
+        </div>
+
+        {/* Previous / Next Post Navigation */}
+        <PostNavigation prev={prev} next={next} />
+
+        {/* Back to all posts */}
+        <div className="mt-10 pt-6 border-t border-border flex items-center justify-between">
           <Link
             href="/blog"
             className="text-sm font-medium text-navy hover:text-navy-dark transition-colors"
           >
             ← Back to all posts
           </Link>
-          <a
-            href={`https://x.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://blog-black-eta-50.vercel.app/blog/${post.slug}`)}&via=mide_xol`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium text-muted hover:text-navy transition-colors"
-          >
-            Share on X →
-          </a>
         </div>
       </article>
     </div>
   );
 }
+
