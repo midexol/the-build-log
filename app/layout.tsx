@@ -49,9 +49,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
               <Link
                 href="/"
-                className="font-bold text-lg text-navy tracking-tight hover:opacity-80 transition-opacity"
+                className="font-extrabold text-xl sm:text-2xl text-navy tracking-tight hover:opacity-80 transition-opacity"
               >
-                the_build_log
+                The Build Log
               </Link>
               <div className="flex items-center gap-6">
                 <div className="hidden sm:flex gap-6 text-sm font-medium text-muted">
@@ -81,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <footer className="border-t border-border bg-surface mt-16">
             <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
               <p className="text-sm text-muted">
-                © 2026 Olamide Okunola · Built with Next.js, deployed on Vercel
+                © 2026 Olamide Okunola
               </p>
               <div className="flex gap-4 items-center">
                 <a

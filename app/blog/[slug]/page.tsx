@@ -6,6 +6,7 @@ import { getPostBySlug, getAllSlugs, getAdjacentPosts } from "@/lib/posts";
 import { getMDXComponents } from "@/mdx-components";
 import { ShareButtons } from "@/components/ShareButtons";
 import { PostNavigation } from "@/components/PostNavigation";
+import { Comments } from "@/components/Comments";
 import rehypePrettyCode from "rehype-pretty-code";
 import type { Metadata } from "next";
 import type { Options } from "rehype-pretty-code";
@@ -127,6 +128,9 @@ export default async function PostPage({
           <ShareButtons title={post.title} url={postUrl} />
         </div>
 
+        {/* Comments Section */}
+        <Comments slug={post.slug} />
+
         {/* Previous / Next Post Navigation */}
         <PostNavigation prev={prev} next={next} />
 
@@ -143,4 +147,5 @@ export default async function PostPage({
     </div>
   );
 }
+
 
