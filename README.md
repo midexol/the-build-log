@@ -4,7 +4,7 @@
 
 Personal dev journal and internship log by **Olamide Okunola** ([@mide_xol](https://x.com/mide_xol)). Documenting wins, failures, SQL queries, Python scripts, team coordination, and building in public.
 
- **Live Website:** [https://blog-black-eta-50.vercel.app](https://blog-black-eta-50.vercel.app)  
+ **Live Website:** [https://the-build-log.vercel.app](https://the-build-log.vercel.app)  
  **Substack Newsletter:** [https://midexol.substack.com/](https://midexol.substack.com/)
 
 ---

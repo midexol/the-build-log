@@ -71,7 +71,7 @@ export default async function PostPage({
   if (!post) notFound();
 
   const { prev, next } = getAdjacentPosts(slug);
-  const postUrl = `https://blog-black-eta-50.vercel.app/blog/${post.slug}`;
+  const postUrl = `https://the-build-log.vercel.app/blog/${post.slug}`;
 
   const { content } = await compileMDX({
     source: post.content,

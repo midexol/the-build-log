@@ -2,7 +2,7 @@ import { getAllPostsFull } from "@/lib/posts";
 
 export const dynamic = "force-static";
 
-const SITE_URL = "https://blog-black-eta-50.vercel.app";
+const SITE_URL = "https://the-build-log.vercel.app";
 const SITE_TITLE = "The Build Log — Mide_xol";
 const SITE_DESCRIPTION =
   "Documenting an internship in public: SQL, Python, team coordination, and shipping with AI as a pair programmer. By Olamide Okunola (@mide_xol).";
