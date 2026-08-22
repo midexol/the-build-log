@@ -39,59 +39,15 @@ function DevToIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
+import NewspaperHeader from "@/components/NewspaperHeader";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="antialiased">
         <div className="min-h-screen flex flex-col">
-          {/* ── Newspaper Top Datebar & Header ── */}
-          <header className="bg-paper border-b border-ink sticky top-0 z-50">
-            {/* Vintage Date Bar */}
-            <div className="datebar px-6 py-1.5 flex flex-wrap items-center justify-between gap-2 max-w-6xl mx-auto">
-              <div>VOL. I, NO. 42 • EST. 2026</div>
-              <div className="font-semibold text-ink">THE BUILD LOG • INTERNSHIP CHRONICLE</div>
-              <div>SATURDAY, AUGUST 22, 2026</div>
-            </div>
-
-            {/* Vintage Centered Masthead Banner */}
-            <div className="max-w-6xl mx-auto px-6 py-6 text-center border-t border-b border-ink my-0 bg-paper">
-              <p className="font-mono-tag text-xs tracking-widest text-red uppercase mb-1 font-bold">
-                DOCUMENTING AN INTERNSHIP IN PUBLIC
-              </p>
-              <Link href="/" className="inline-block group">
-                <h1 className="font-display text-4xl sm:text-6xl font-black text-ink tracking-tight hover:opacity-90 transition-opacity uppercase">
-                  The Build Log
-                </h1>
-              </Link>
-              <p className="font-serif italic text-muted text-sm sm:text-base mt-2 max-w-xl mx-auto">
-                &ldquo;All the SQL queries, Python automation, and engineering notes fit to print.&rdquo;
-              </p>
-            </div>
-
-            {/* Vintage Subnav Line */}
-            <nav className="max-w-6xl mx-auto px-6 py-2.5 flex items-center justify-between border-t border-ink bg-paper font-mono-tag text-xs tracking-wider uppercase">
-              <div className="flex items-center gap-6 sm:gap-8 font-semibold text-ink">
-                <Link href="/" className="hover:text-red transition-colors flex items-center gap-1.5">
-                  <span className="text-red">§</span> Front Page
-                </Link>
-                <Link href="/blog" className="hover:text-red transition-colors flex items-center gap-1.5">
-                  <span className="text-red">§</span> Archives
-                </Link>
-                <Link href="/about" className="hover:text-red transition-colors flex items-center gap-1.5">
-                  <span className="text-red">§</span> About Author
-                </Link>
-              </div>
-              <a
-                href="https://midexol.substack.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary text-xs py-1 px-3 flex items-center gap-1.5"
-              >
-                <Mail size={13} />
-                Dispatch
-              </a>
-            </nav>
-          </header>
+          {/* ── Newspaper Collapsible Header ── */}
+          <NewspaperHeader />
 
           <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 py-8">{children}</main>
 
