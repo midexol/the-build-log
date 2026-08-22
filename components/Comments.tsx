@@ -72,28 +72,28 @@ export function Comments({ slug }: CommentsProps) {
   };
 
   return (
-    <section className="mt-16 pt-10 border-t border-slate-200" id="comments">
+    <section className="mt-16 pt-10 border-t-2 border-ink" id="comments">
       {/* Section Header */}
-      <div className="flex items-center gap-2.5 mb-8">
-        <MessageSquare className="w-5 h-5 text-blue-900" />
-        <h2 className="text-xl font-bold text-slate-900">
-          Comments {comments.length > 0 && `(${comments.length})`}
+      <div className="flex items-center gap-2.5 mb-8 pb-3 border-b border-rule">
+        <MessageSquare className="w-5 h-5 text-red" />
+        <h2 className="font-display text-2xl font-bold text-ink uppercase tracking-tight">
+          Letters to the Editor {comments.length > 0 && `(${comments.length})`}
         </h2>
       </div>
 
       {/* Add Comment Form */}
       <form
         onSubmit={handleSubmit}
-        className="mb-10 p-5 sm:p-6 bg-white border border-slate-200 rounded-xl shadow-xs"
+        className="mb-10 p-5 sm:p-6 bg-paper-card border border-ink rounded-xs shadow-newspaper"
       >
-        <h3 className="text-sm font-semibold text-slate-900 mb-4">
-          Leave a comment
+        <h3 className="font-mono-tag text-xs font-bold text-ink uppercase tracking-wider mb-4 text-red">
+          SUBMIT A LETTER
         </h3>
 
         <div className="space-y-4">
           <div>
-            <label htmlFor="comment-name" className="block text-xs font-medium text-slate-700 mb-1">
-              Your Name
+            <label htmlFor="comment-name" className="block font-mono-tag text-xs font-bold text-ink uppercase mb-1">
+              AUTHOR NAME
             </label>
             <input
               id="comment-name"
@@ -102,13 +102,13 @@ export function Comments({ slug }: CommentsProps) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Sarah Jenkins"
-              className="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900 text-slate-900 transition-all placeholder:text-slate-400"
+              className="w-full px-3.5 py-2 text-sm font-serif bg-paper border border-ink focus:outline-none focus:ring-1 focus:ring-red text-ink transition-all placeholder:text-muted"
             />
           </div>
 
           <div>
-            <label htmlFor="comment-text" className="block text-xs font-medium text-slate-700 mb-1">
-              Comment
+            <label htmlFor="comment-text" className="block font-mono-tag text-xs font-bold text-ink uppercase mb-1">
+              MESSAGE CONTENT
             </label>
             <textarea
               id="comment-text"
@@ -117,7 +117,7 @@ export function Comments({ slug }: CommentsProps) {
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="Share your thoughts, experiences, or feedback..."
-              className="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900 text-slate-900 transition-all placeholder:text-slate-400 resize-y"
+              className="w-full px-3.5 py-2 text-sm font-serif bg-paper border border-ink focus:outline-none focus:ring-1 focus:ring-red text-ink transition-all placeholder:text-muted resize-y"
             />
           </div>
 
@@ -125,10 +125,10 @@ export function Comments({ slug }: CommentsProps) {
             <button
               type="submit"
               disabled={isSubmitting || !name.trim() || !text.trim()}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-900 text-white font-semibold text-xs rounded-lg hover:bg-blue-950 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-xs"
+              className="btn-primary text-xs py-2 px-4 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Send className="w-3.5 h-3.5" />
-              <span>Post Comment</span>
+              <span>DISPATCH LETTER</span>
             </button>
           </div>
         </div>
@@ -137,37 +137,37 @@ export function Comments({ slug }: CommentsProps) {
       {/* Comment List */}
       <div className="space-y-4">
         {comments.length === 0 ? (
-          <div className="p-8 text-center bg-slate-50 border border-dashed border-slate-200 rounded-xl">
-            <User className="w-8 h-8 text-slate-400 mx-auto mb-2 opacity-60" />
-            <p className="text-sm font-medium text-slate-600">
-              No comments yet
+          <div className="p-8 text-center bg-paper-card border border-dashed border-rule rounded-xs">
+            <User className="w-8 h-8 text-muted mx-auto mb-2 opacity-60" />
+            <p className="font-display font-bold text-base text-ink">
+              No letters published yet
             </p>
-            <p className="text-xs text-slate-400 mt-1">
-              Be the first to share your thoughts on this story!
+            <p className="font-serif text-xs text-muted mt-1">
+              Be the first reader to submit feedback to the editor!
             </p>
           </div>
         ) : (
           comments.map((comment) => (
             <div
               key={comment.id}
-              className="p-5 bg-white border border-slate-200 rounded-xl shadow-xs"
+              className="p-5 bg-paper-card border border-ink rounded-xs shadow-xs"
             >
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between mb-3 pb-2 border-b border-rule">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-blue-900/10 text-blue-900 font-bold text-xs flex items-center justify-center border border-blue-900/20">
+                  <div className="w-7 h-7 rounded-xs bg-ink text-paper font-mono-tag font-bold text-xs flex items-center justify-center">
                     {getInitials(comment.name)}
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-slate-900">
+                    <h4 className="font-display font-bold text-sm text-ink">
                       {comment.name}
                     </h4>
-                    <span className="text-xs text-slate-400">
+                    <span className="font-mono-tag text-[10px] text-muted uppercase">
                       {comment.date}
                     </span>
                   </div>
                 </div>
               </div>
-              <p className="text-sm text-slate-700 leading-relaxed pl-11 whitespace-pre-line">
+              <p className="font-serif text-sm text-ink leading-relaxed whitespace-pre-line">
                 {comment.text}
               </p>
             </div>

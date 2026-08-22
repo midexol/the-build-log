@@ -85,46 +85,61 @@ export default async function PostPage({
   });
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12">
-      {/* Back */}
+    <div className="max-w-4xl mx-auto py-4">
+      {/* Back button */}
       <Link
         href="/blog"
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-muted hover:text-navy transition-colors mb-10"
+        className="inline-flex items-center gap-1.5 font-mono-tag text-xs font-bold text-ink hover:text-red transition-colors mb-6 uppercase tracking-wider"
       >
-        ← All posts
+        ← RETURN TO ARCHIVES
       </Link>
 
-      <article className="max-w-2xl">
-        {/* Tags */}
-        {post.tags.length > 0 && (
-          <div className="flex gap-2 flex-wrap mb-5">
-            {post.tags.map((tag) => (
-              <Link key={tag} href={`/blog?tag=${tag}`} className="tag-pill">
-                {tag}
-              </Link>
-            ))}
-          </div>
-        )}
+      <article className="bg-paper-card border-2 border-ink p-6 sm:p-10 shadow-newspaper">
+        {/* Newspaper Category Pills & Issue Header */}
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-2 border-b border-ink font-mono-tag text-xs">
+          {post.tags.length > 0 && (
+            <div className="flex gap-1.5 flex-wrap">
+              {post.tags.map((tag) => (
+                <Link key={tag} href={`/blog?tag=${tag}`} className="tag-pill text-[10px]">
+                  {tag}
+                </Link>
+              ))}
+            </div>
+          )}
+          <span className="text-red font-bold uppercase tracking-wider">
+            OFFICIAL EDITORIAL DISPATCH
+          </span>
+        </div>
 
         {/* Title */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-ink leading-tight tracking-tight mb-4">
+        <h1 className="font-display font-black text-3xl sm:text-5xl text-ink leading-tight tracking-tight mb-4 uppercase">
           {post.title}
         </h1>
 
-        {/* Meta row */}
-        <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-muted mb-10 pb-6 border-b border-border">
+        {/* Vintage Double Rule Meta Bar */}
+        <div className="py-2.5 my-6 border-t-2 border-b-2 border-ink flex flex-wrap items-center justify-between gap-3 font-mono-tag text-xs text-muted uppercase">
+          <div>
+            BYLINE: <span className="font-bold text-ink">OLAMIDE OKUNOLA</span>
+          </div>
           <div className="flex items-center gap-3">
-            <span>{format(new Date(post.date), "MMMM d, yyyy")}</span>
-            <span className="text-border">·</span>
-            <span>{post.readingTime}</span>
+            <span>{format(new Date(post.date), "MMMM d, yyyy").toUpperCase()}</span>
+            <span>•</span>
+            <span className="font-bold text-red">{post.readingTime.toUpperCase()}</span>
           </div>
         </div>
 
-        {/* MDX content */}
-        <div className="prose-post">{content}</div>
+        {/* Summary Excerpt Lead */}
+        {post.summary && (
+          <p className="font-serif italic text-lg text-ink leading-relaxed mb-8 p-4 border-l-4 border-red bg-paper">
+            &ldquo;{post.summary}&rdquo;
+          </p>
+        )}
+
+        {/* MDX content with drop cap */}
+        <div className="prose-post drop-cap max-w-none">{content}</div>
 
         {/* Share buttons */}
-        <div className="mt-12 pt-6 border-t border-slate-200">
+        <div className="mt-12 pt-6 border-t border-ink">
           <ShareButtons title={post.title} url={postUrl} />
         </div>
 
@@ -135,12 +150,12 @@ export default async function PostPage({
         <PostNavigation prev={prev} next={next} />
 
         {/* Back to all posts */}
-        <div className="mt-10 pt-6 border-t border-border flex items-center justify-between">
+        <div className="mt-10 pt-6 border-t-2 border-ink flex items-center justify-between font-mono-tag text-xs">
           <Link
             href="/blog"
-            className="text-sm font-medium text-navy hover:text-navy-dark transition-colors"
+            className="font-bold text-ink hover:text-red transition-colors uppercase tracking-wider"
           >
-            ← Back to all posts
+            ← BACK TO ARCHIVES INDEX
           </Link>
         </div>
       </article>

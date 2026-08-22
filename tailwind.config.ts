@@ -10,34 +10,52 @@ const config: Config = {
     extend: {
       colors: {
         // Backgrounds
-        canvas: "#F8FAFC",      // page background — cool light gray
-        surface: "#FFFFFF",     // card / panel surface
+        paper: "#F7F5F0",
+        "paper-card": "#EFEBE2",
+        canvas: "#F7F5F0",
+        surface: "#EFEBE2",
         // Typography
-        ink: "#0F172A",         // primary text — near black
-        muted: "#64748B",       // secondary text — slate
-        subtle: "#94A3B8",      // tertiary — lighter slate
-        // Accent — single colour used everywhere
+        ink: {
+          DEFAULT: "#111111",
+          muted: "#6B6660",
+          subtle: "#8C867D",
+        },
+        muted: "#6B6660",
+        subtle: "#8C867D",
+        // Accents
+        red: {
+          DEFAULT: "#C81C1C",
+          dark: "#9E1414",
+          light: "rgba(200, 28, 28, 0.08)",
+        },
         navy: {
-          DEFAULT: "#1E3A8A",   // slate navy accent
-          light: "#EFF3FF",     // tint for pill backgrounds
-          mid: "#3B5FBF",       // hover state
-          dark: "#172D6E",      // pressed / deep
+          DEFAULT: "#C81C1C",
+          light: "#F5EBE6",
+          mid: "#A81818",
+          dark: "#800F0F",
         },
         // Borders & lines
-        border: "#E2E8F0",      // hairline borders
+        rule: {
+          DEFAULT: "#D3CDBF",
+          dark: "#111111",
+        },
+        border: "#D3CDBF",
         // Code
-        "code-bg": "#1E293B",   // dark slate for code blocks
+        "code-bg": "#1A1917",
       },
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
+        display: ["Playfair Display", "Georgia", "serif"],
+        serif: ["Source Serif 4", "Georgia", "serif"],
+        mono: ["IBM Plex Mono", "Courier New", "monospace"],
+        sans: ["Source Serif 4", "Georgia", "serif"],
       },
       boxShadow: {
-        card: "0 1px 3px 0 rgba(0,0,0,0.07), 0 1px 2px -1px rgba(0,0,0,0.05)",
-        "card-hover": "0 4px 12px 0 rgba(30,58,138,0.12), 0 2px 4px -1px rgba(0,0,0,0.06)",
+        card: "0 1px 3px 0 rgba(17,17,17,0.06)",
+        "card-hover": "0 6px 16px 0 rgba(17,17,17,0.12)",
+        newspaper: "2px 2px 0px 0px #111111",
       },
       borderRadius: {
-        card: "12px",
+        card: "4px",
       },
     },
   },

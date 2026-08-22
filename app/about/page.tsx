@@ -50,47 +50,64 @@ const hats = [
 
 export default function AboutPage() {
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12">
-      {/* Hero banner */}
-      <div className="bg-navy rounded-card p-8 sm:p-12 text-white mb-10">
-        <p className="text-blue-200 text-sm font-medium mb-2">@mide_xol</p>
-        <h1 className="text-3xl sm:text-4xl font-bold mb-4 leading-tight">
+    <div className="space-y-10 py-4">
+      {/* Hero Feature Banner */}
+      <div className="bg-ink text-paper border-2 border-ink p-8 sm:p-12 shadow-newspaper relative">
+        <span className="font-mono-tag text-xs text-red font-bold uppercase tracking-widest block mb-2">
+          BIOGRAPHICAL PROFILE • AUTHOR &amp; PUBLISHER
+        </span>
+        <h1 className="font-display text-4xl sm:text-5xl font-black mb-4 leading-none uppercase">
           Olamide Okunola
         </h1>
-        <p className="text-blue-100 text-lg leading-relaxed max-w-xl">
-          I wear three hats at my internship and I&apos;m learning to balance all of them
-          — in public.
+        <p className="font-serif text-paper-card text-lg sm:text-xl leading-relaxed max-w-2xl italic">
+          &ldquo;I wear three distinct hats at my internship — data analyst, team coordinator, and software developer — and I am learning to balance all of them in public.&rdquo;
         </p>
       </div>
 
-      {/* Three hats */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
-        {hats.map(({ icon: Icon, title, desc }) => (
-          <div
-            key={title}
-            className="bg-surface border border-border rounded-card p-6 shadow-card"
-          >
-            <div className="w-10 h-10 rounded-lg bg-navy/10 flex items-center justify-center mb-4">
-              <Icon size={20} className="text-navy" />
+      {/* Three Hats Grid */}
+      <div>
+        <h2 className="font-display font-bold text-2xl text-ink uppercase tracking-tight mb-4 pb-2 border-b-2 border-ink">
+          The Three Operational Roles
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {hats.map(({ icon: Icon, title, desc }) => (
+            <div
+              key={title}
+              className="bg-paper-card border border-ink p-6 rounded-xs shadow-xs flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-9 h-9 rounded-xs bg-ink text-paper flex items-center justify-center mb-4">
+                  <Icon size={18} />
+                </div>
+                <h3 className="font-display font-bold text-lg text-ink uppercase mb-2">
+                  {title}
+                </h3>
+                <p className="font-serif text-sm text-muted leading-relaxed">
+                  {desc}
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-rule font-mono-tag text-[10px] text-red font-bold uppercase tracking-wider">
+                PRIMARY DUTY
+              </div>
             </div>
-            <h2 className="font-bold text-ink mb-2">{title}</h2>
-            <p className="text-sm text-muted leading-relaxed">{desc}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* What I actually do */}
-      <div className="bg-surface border border-border rounded-card p-6 sm:p-8 shadow-card mb-8">
-        <h2 className="font-bold text-ink text-lg mb-4">What I actually do</h2>
-        <ul className="space-y-3">
+      <div className="bg-paper-card border border-ink p-6 sm:p-8 rounded-xs shadow-xs space-y-4">
+        <h2 className="font-display font-bold text-xl text-ink uppercase tracking-tight border-b border-rule pb-2">
+          Core Day-to-Day Responsibilities
+        </h2>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 font-serif text-sm text-ink">
           {[
-            "Write SQL to answer business questions",
-            "Automate Excel reports with Python",
-            "Make sure my team knows what to build, when, and why",
-            "Document everything so we don't make the same mistake twice",
+            "Write complex SQL queries to solve business intelligence challenges",
+            "Automate recurring Excel data reports using Python scripts",
+            "Ensure the dev team is aligned, unblocked, and shipping on schedule",
+            "Document architecture and engineering lessons for team clarity",
           ].map((item) => (
-            <li key={item} className="flex gap-3 text-muted">
-              <ArrowRight size={16} className="text-navy shrink-0 mt-0.5" />
+            <li key={item} className="flex gap-3 bg-paper p-3 border border-rule">
+              <ArrowRight size={16} className="text-red shrink-0 mt-0.5" />
               <span>{item}</span>
             </li>
           ))}
@@ -98,58 +115,59 @@ export default function AboutPage() {
       </div>
 
       {/* Why this blog */}
-      <div className="bg-surface border border-border rounded-card p-6 sm:p-8 shadow-card mb-8">
-        <h2 className="font-bold text-ink text-lg mb-3">Why this blog exists</h2>
-        <p className="text-muted leading-relaxed">
-          I&apos;m documenting my internship journey: the wins, the failures, and the
-          messy middle. No gatekeeping. Just honest lessons from someone building
-          their career in public.
+      <div className="bg-paper-card border border-ink p-6 sm:p-8 rounded-xs shadow-xs space-y-3">
+        <h2 className="font-display font-bold text-xl text-ink uppercase tracking-tight border-b border-rule pb-2">
+          Editorial Purpose of This Dispatch
+        </h2>
+        <p className="font-serif text-base text-ink leading-relaxed drop-cap">
+          I&apos;m documenting my internship journey in real time: the wins, the failures, and the messy middle. No gatekeeping, no corporate jargon. Just honest, transparent dispatches from someone building their tech career in public.
         </p>
       </div>
 
-      {/* Quote */}
-      <div className="border-l-4 border-navy pl-5 mb-10">
-        <p className="text-ink italic text-lg leading-relaxed">
-          &ldquo;Not the expert. Just the intern who takes notes and keeps the team
-          moving.&rdquo;
+      {/* Editorial Quote */}
+      <div className="border-l-4 border-red bg-paper p-6 border border-ink">
+        <p className="font-serif italic text-lg sm:text-xl text-ink leading-relaxed">
+          &ldquo;Not the expert. Just the intern who takes detailed notes, keeps the team moving, and ships with AI as a pair programmer.&rdquo;
         </p>
       </div>
 
       {/* Connect */}
-      <div>
-        <h2 className="font-bold text-ink text-lg mb-4">Let&apos;s connect</h2>
-        <div className="flex gap-3 flex-wrap">
+      <div className="border-t-2 border-ink pt-6 space-y-4">
+        <h2 className="font-display font-bold text-xl text-ink uppercase tracking-tight">
+          Connect &amp; Subscribe to Dispatches
+        </h2>
+        <div className="flex gap-3 flex-wrap font-mono-tag">
           <a
             href="https://midexol.substack.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary flex items-center gap-2"
+            className="btn-primary text-xs py-2 px-4 flex items-center gap-2"
           >
-            <Mail size={15} /> Subscribe on Substack
+            <Mail size={15} /> SUBSTACK DISPATCH
           </a>
           <a
             href="https://dev.to/mide_xol"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline flex items-center gap-2"
+            className="btn-outline text-xs py-2 px-4 flex items-center gap-2"
           >
-            <DevToIcon className="w-[15px] h-[15px]" /> Dev.to
+            <DevToIcon className="w-[15px] h-[15px]" /> DEV.TO
           </a>
           <a
             href="https://x.com/mide_xol"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline flex items-center gap-2"
+            className="btn-outline text-xs py-2 px-4 flex items-center gap-2"
           >
-            <XIcon className="w-[15px] h-[15px]" /> @mide_xol
+            <XIcon className="w-[15px] h-[15px]" /> @MIDE_XOL
           </a>
           <a
             href="https://www.linkedin.com/in/okunola-olamide-xielle526"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline flex items-center gap-2"
+            className="btn-outline text-xs py-2 px-4 flex items-center gap-2"
           >
-            <LinkedinIcon className="w-[15px] h-[15px]" /> LinkedIn
+            <LinkedinIcon className="w-[15px] h-[15px]" /> LINKEDIN
           </a>
         </div>
       </div>

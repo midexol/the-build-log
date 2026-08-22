@@ -16,26 +16,34 @@ export default function BlogIndexPage({
   const allTags = Array.from(new Set(allPosts.flatMap((p) => p.tags))).sort();
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12">
+    <div className="space-y-8 py-4">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-ink mb-1">All entries</h1>
-        <p className="text-muted">
-          {allPosts.length} post{allPosts.length !== 1 ? "s" : ""} and counting.
+      <div className="border-b-2 border-ink pb-6">
+        <span className="font-mono-tag text-xs text-red font-bold uppercase tracking-widest block mb-1">
+          CHRONOLOGICAL DISPATCHES
+        </span>
+        <h1 className="font-display text-3xl sm:text-4xl font-black text-ink uppercase tracking-tight mb-2">
+          The Newspaper Archives
+        </h1>
+        <p className="font-serif text-muted text-base">
+          Complete catalog of {allPosts.length} published edition{allPosts.length !== 1 ? "s" : ""} documenting code, data analytics, and shipping notes.
         </p>
       </div>
 
       {/* Tag filter pills */}
       {allTags.length > 0 && (
-        <div className="mb-8">
+        <div className="bg-paper-card p-4 border border-ink rounded-xs">
+          <span className="font-mono-tag text-[11px] font-bold text-ink uppercase tracking-wider block mb-2">
+            FILTER BY TOPIC SECTION:
+          </span>
           <TagFilter tags={allTags} />
         </div>
       )}
 
       {/* Divider */}
-      <hr className="divider mb-8" />
+      <div className="border-b border-ink" />
 
-      {/* Grid — filtered client-side via URL param, handled in TagFilter */}
+      {/* Grid */}
       <PostGrid allPosts={allPosts} searchParams={searchParams} />
     </div>
   );
@@ -53,14 +61,15 @@ async function PostGrid({
 
   if (posts.length === 0) {
     return (
-      <p className="text-muted py-12 text-center">
-        No posts tagged &ldquo;{tag}&rdquo; yet.
-      </p>
+      <div className="p-12 text-center bg-paper-card border border-dashed border-ink rounded-xs font-serif">
+        <p className="text-ink font-bold text-lg">No dispatches found in topic &ldquo;{tag}&rdquo;</p>
+        <p className="text-muted text-sm mt-1">Try selecting another topic filter above.</p>
+      </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {posts.map((post, i) => (
         <PostCard key={post.slug} post={post} index={i} />
       ))}
